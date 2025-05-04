@@ -2,7 +2,7 @@
 
 # MIT License
 # 
-# Copyright (c) 2023 muonw
+# Copyright (c) 2025 muonw
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@
 # Usage example: ./ezconfig.sh /var/file.conf set configkey1 = ON
 # The resulf of the example above would be setting "configkey1 = ON" in the file /var/file.conf
 
-version=1.0.0
+version=1.1.0
 
 firstargument=$1 # e.g. /var/file.conf
 operation=$2 # add|set|reset|autoset|autoreset
@@ -159,7 +159,7 @@ if [[ "${operation}" =~ ^('add'|'set'|'reset'|'autoset'|'autoreset')$ ]]; then
 	# The operation is "set"/"autoset", so append to the file
 	else
 		# If the file doesn't have a new line character at the end, we should add one before appending
-		lasttwobytes=$(tail --byte 2 "${filepath}" | xxd -p)
+		lasttwobytes=$(tail -c 2 "${filepath}" | od -An -tx1 | tr -d ' \n')
 		# Check if there is an LF (\n) character at the end of the file
 		if [[ ! "${lasttwobytes}" =~ ('0a')$ ]]; then
 			# Check if there is an CRLF (\r\n) character in the file
