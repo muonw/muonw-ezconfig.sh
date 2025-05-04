@@ -11,13 +11,6 @@ Install by running this command in your terminal:
 bash <(wget -qO- https://raw.githubusercontent.com/muonw/muonw-ezconfig.sh/main/installer.sh)
 ```
 
-If your Linux distro does not come with `xxd` out of the box, make sure to install it:
-
-```sh
-# Example installation for Debian
-apt install xxd
-```
-
 ## 📖 Manual
 
 ```sh
